@@ -55,6 +55,15 @@ public class Task {
 
 	    public String getStatus() { return status; }
 	    public void setStatus(String status) { this.status = status; }
+	    @Override
+	    public String toString() {
+	        return "Task ID: " + id +
+	               ", Title: " + title +
+	               ", Duration: " + duration + " mins" +
+	               ", Deadline: " + deadline +
+	               ", Priority: " + priority +
+	               ", Status: " + status;
+	    }
 	}
 
 	

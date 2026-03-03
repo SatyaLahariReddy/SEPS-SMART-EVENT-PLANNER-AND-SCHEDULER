@@ -7,12 +7,15 @@ public class Event {
 	    private String title; //Title of the Event
 	    private LocalDateTime startTime; //Start Time of Event
 	    private LocalDateTime endTime;
+	    private LocalDateTime createdAt;
 	    public Event() {}
-        public Event(int userId,String title,LocalDateTime startTime,LocalDateTime endTime) {
+        public Event(int id,int userId,String title,LocalDateTime startTime,LocalDateTime endTime,LocalDateTime createdAt) {
+        	this.id=id;
         	this.userId=userId;
         	this.title=title;
         	this.startTime=startTime;
         	this.endTime=endTime;
+        	this.createdAt = LocalDateTime.now();
         }
         public boolean conflictsWith(Event other) {
         	return this.startTime.isBefore(other.getEndTime())&& this.endTime.isAfter(other.getStartTime());
@@ -57,6 +60,17 @@ public class Event {
 
         public void setEndTime(LocalDateTime endTime) {
             this.endTime = endTime;
+        }
+        public LocalDateTime getCreatedAt() {
+            return createdAt;
+        }
+        @Override
+        public String toString() {
+            return "Event ID: " + id +
+                   ", Title: " + title +
+                   ", Start: " + startTime +
+                   ", End: " + endTime +
+                   ", Created At: " + createdAt;
         }
     
 }
